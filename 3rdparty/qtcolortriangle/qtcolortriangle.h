@@ -64,7 +64,11 @@
 #ifndef QTCOLORTRIANGLE_H
 #define QTCOLORTRIANGLE_H
 #include <QtGui/QImage>
-#include <QtWidgets/QWidget>
+#if QT_VERSION > QT_VERSION_CHECK(5, 0, 0)
+    #include <QtWidgets/QWidget>
+#else
+    #include <QWidget>
+#endif
 
 class QPointF;
 struct Vertex;
@@ -99,13 +103,13 @@ protected:
     void keyPressEvent(QKeyEvent *e);
     void resizeEvent(QResizeEvent *);
     void drawTrigon(QImage *p, const QPointF &a, const QPointF &b,
-		    const QPointF &c, const QColor &color);
+            const QPointF &c, const QColor &color);
 
 private:
     double radiusAt(const QPointF &pos, const QRect &rect) const;
     double angleAt(const QPointF &pos, const QRect &rect) const;
     QPointF movePointToTriangle(double x, double y, const Vertex &a,
-				    const Vertex &b, const Vertex &c) const;
+            const Vertex &b, const Vertex &c) const;
 
     QPointF pointFromColor(const QColor &col) const;
     QColor colorFromPoint(const QPointF &p) const;
@@ -127,14 +131,17 @@ private:
     QPointF selectorPos;
 
     enum SelectionMode {
-	Idle,
-	SelectingHue,
-	SelectingSatValue
+    Idle,
+    SelectingHue,
+    SelectingSatValue
     } selMode;
 };
 
-
-#include <QtWidgets/QColorDialog>
+#if QT_VERSION > QT_VERSION_CHECK(5, 0, 0)
+    #include <QtWidgets/QColorDialog>
+#else
+    #include <QColorDialog>
+#endif
 
 class QColorTriangleDialog : public QDialog
 {

@@ -16,8 +16,14 @@
 #define __ExportWizard_h__
 
 #include <QtCore/QMap>
-#include <QtPrintSupport/QPrinter>
-#include <QtWidgets/QWizard>
+
+#if QT_VERSION > QT_VERSION_CHECK(5, 0, 0)
+    #include <QtPrintSupport/QPrinter>
+    #include <QtWidgets/QWizard>
+#else
+    #include <QWizard>
+    #include <QPrinter>
+#endif
 
 class Canvas;
 class QPrinter;

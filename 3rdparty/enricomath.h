@@ -17,6 +17,15 @@
 #ifndef __enricomath_h__
 #define __enricomath_h__
 
+#ifdef __APPLE__
+    #include <AvailabilityMacros.h>
+    #if MAC_OS_X_VERSION_MIN_REQUIRED >= 1090
+        #define sincos(x, s, c) __sincos(x, s, c)
+    #else
+        #define sincos(x,s,c) (*s = sin(x), *c = cos(x))
+    #endif
+#endif
+
 // uncomment the following to perform checks on operations (slow, safer)
 #define VECTOR_CHECK_MATH
 

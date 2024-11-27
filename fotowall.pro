@@ -72,9 +72,9 @@ win32 {
 # deployment on Mac
 macx {
     ICON = fotowall.icns
-    CONFIG += x86 ppc
-    QMAKE_MAC_SDK = /Developer/SDKs/MacOSX10.4u.sdk
-    QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.3
+    # CONFIG += x86 ppc
+    # QMAKE_MAC_SDK = /Developer/SDKs/MacOSX10.4u.sdk
+    # QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.3
 }
 
 # deployment on Symbian

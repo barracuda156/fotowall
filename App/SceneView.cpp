@@ -288,9 +288,17 @@ void SceneView::wheelEvent(QWheelEvent * event)
 {
   if(event->modifiers() == Qt::ControlModifier && m_abstractScene && m_abstractScene->sceneSelectable())
   {
+#if QT_VERSION > QT_VERSION_CHECK(5, 0, 0)
     if(event->angleDelta().y() < 0 && m_viewScale > 0.1)
+#else
+    if(event->delta() < 0 && m_viewScale > 0.1)
+#endif
       setViewScale(m_viewScale * 0.707106781187);
+#if QT_VERSION > QT_VERSION_CHECK(5, 0, 0)
     else if(event->angleDelta().y() > 0 && m_viewScale < 15)
+#else
+    else if(event->delta() > 0 && m_viewScale < 15)
+#endif
       setViewScale(m_viewScale * 1.41421356237);
     event->accept();
     return;

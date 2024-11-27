@@ -70,8 +70,13 @@
 #ifndef RICHTEXTEDITOR_H
 #define RICHTEXTEDITOR_H
 
-#include <QtWidgets/QTextEdit>
-#include <QtWidgets/QDialog>
+#if QT_VERSION > QT_VERSION_CHECK(5, 0, 0)
+    #include <QtWidgets/QTextEdit>
+    #include <QtWidgets/QDialog>
+#else
+    #include <QTextEdit>
+    #include <QDialog>
+#endif
 
 class QtColorTriangle;
 class QTabWidget;

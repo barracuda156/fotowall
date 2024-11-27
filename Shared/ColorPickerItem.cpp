@@ -23,8 +23,13 @@
 #include <QtCore/QTimer>
 #include <QtCore/QtGlobal>
 #include <QtGui/QPainter>
-#include <QtWidgets/QGraphicsSceneMouseEvent>
-#include <QtWidgets/QStyleOptionGraphicsItem>
+#if QT_VERSION > QT_VERSION_CHECK(5, 0, 0)
+    #include <QtWidgets/QGraphicsSceneMouseEvent>
+    #include <QtWidgets/QStyleOptionGraphicsItem>
+#else
+    #include <QStyleOptionGraphicsItem>
+    #include <QGraphicsSceneMouseEvent>
+#endif
 
 #define COLORPICKER_MARGIN 8
 #define COLORPICKER_SPACING 10

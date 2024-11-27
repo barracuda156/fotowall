@@ -15,8 +15,13 @@
 #ifndef __ColorPickerItem_h__
 #define __ColorPickerItem_h__
 
-#include <QtGui/QIcon>
-#include <QtWidgets/QGraphicsItem>
+#if QT_VERSION > QT_VERSION_CHECK(5, 0, 0)
+    #include <QtGui/QIcon>
+    #include <QtWidgets/QGraphicsItem>
+#else
+    #include <QIcon>
+    #include <QGraphicsItem>
+#endif
 
 class ColorPickerItem : public QObject, public QGraphicsItem
 {

@@ -74,11 +74,19 @@
 #include <QtGui/QPainterPath>
 #include <QtGui/QPixmap>
 #include <QtGui/QResizeEvent>
+#if QT_VERSION > QT_VERSION_CHECK(5, 0, 0)
 #include <QtWidgets/QColorDialog>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QLayout>
 #include <QtWidgets/QToolTip>
 #include <QtWidgets/QVBoxLayout>
+#else
+#include <QColorDialog>
+#include <QFrame>
+#include <QLayout>
+#include <QToolTip>
+#include <QVBoxLayout>
+#endif
 
 #include <math.h>
 
